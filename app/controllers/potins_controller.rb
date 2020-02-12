@@ -12,4 +12,9 @@ class PotinsController < ApplicationController
       render 'new'
     end
   end
+
+  def show
+    @potin = Potin.find(params[:id])
+    @id = params[:id]
+  end
 end

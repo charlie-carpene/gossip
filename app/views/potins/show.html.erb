@@ -5,6 +5,6 @@
     <%= "=" * 20 %><br/><br/>
 
     L'auteur : <%= link_to "#{@potin.user.first_name} #{@potin.user.last_name}", user_path(@potin.user.id) %><br>
-
+    La ville de l'auteur : <%= @potin.user.origin %>
 
   </p>

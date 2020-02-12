@@ -5,13 +5,19 @@
   </div>
 <% end %>
 
-<br/><h1>La bienvenue à toi !</h1>
-<h5>Tu trouveras la liste des potins ci-dessous et, d'ailleurs, toi aussi tu peux <%= link_to "en ajouter un", new_potin_path %> si tu veux ;)</h5><br/>
+<div class="jumbotron text-center" style="margin-bottom: 0;">
+  <br/><h1>La bienvenue à toi !</h1>
+  <h5>Tu trouveras la liste des potins ci-dessous et, d'ailleurs, toi aussi tu peux <%= link_to "en ajouter un", new_potin_path %> si tu veux ;)</h5>
+</div>
 
-
-<% @potins.each do |potin| %>
-  <p>
-    <%= link_to potin.title, potin_path(potin.id), :class => "btn btn-info my-2 my-sm-0" %><br>
-    de <%= potin.user.first_name %>
-  </p>
-<% end %>
+<div class="list-group">
+  <% @potins.each do |potin| %>
+    <div class= "list-group-item list-group-item-action">
+      <div class="d-flex w-100 justify-content-between">
+        <h5 class="mb-1"><%= link_to potin.title, potin_path(potin.id), :class => "btn btn-primary" %></h5>
+        <small class="text-muted">Ajouter le <%= potin.created_at.strftime("%d %b. %Y") %></small>
+      </div>
+      <small>De <%= potin.user.first_name %></small>
+    </div>
+  <% end %>
+</div>

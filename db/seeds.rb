@@ -9,9 +9,9 @@ require 'faker'
 User.destroy_all
 Potin.destroy_all
 
-User.create(first_name: "Charlie", last_name: "Carpene", age: "29", origin: "Montpellier")
-User.create(first_name: "Marie", last_name: "Distinguin", age: "27", origin: "Perigeux")
-User.create(first_name: "Joannice", last_name: "Thevenon", age: "25", origin: "Lyon")
+User.create(first_name: "Charlie", last_name: "Carpene", age: "29", origin: "Montpellier", description: "J'aime les chips", email: "charlie@charlie.com")
+User.create(first_name: "Marie", last_name: "Distinguin", age: "27", origin: "Perigeux", description: "J'aime les cacahuètes", email: "marie@marie.com")
+User.create(first_name: "Joannice", last_name: "Thevenon", age: "25", origin: "Lyon", description: "J'aime les pistaches", email: "jonas@jonas.com")
 
 Potin.create(title: "Le feu ça brule", description: "Contre toute attente : le feu, ça brule !", user: User.all.sample)
 Potin.create(title: "Gravité", description: "En chute libre, on a tendance à tomber.", user: User.all.sample)
