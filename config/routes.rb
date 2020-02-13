@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
 
-  get 'static_pages/new_potin'
   get 'dynamic_pages/welcome'
   get 'welcome/:id', to: 'dynamic_pages#welcome', as: 'welcome'
   get 'static_pages/contact'
@@ -9,4 +8,5 @@ Rails.application.routes.draw do
 
   resources :potins
   resources :users
+  resources :comments, only: [:create]
 end

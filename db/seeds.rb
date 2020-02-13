@@ -8,6 +8,7 @@ require 'faker'
 #   Character.create(name: 'Luke', movie: movies.first)
 User.destroy_all
 Potin.destroy_all
+Comment.destroy_all
 
 User.create(first_name: "Charlie", last_name: "Carpene", age: "29", origin: "Montpellier", description: "J'aime les chips", email: "charlie@charlie.com")
 User.create(first_name: "Marie", last_name: "Distinguin", age: "27", origin: "Perigeux", description: "J'aime les cacahuètes", email: "marie@marie.com")
@@ -18,3 +19,7 @@ Potin.create(title: "Gravité", description: "En chute libre, on a tendance à t
 Potin.create(title: "L'espoir", description: "Et non pas les poires, c'est important. Alors que les poires, en vrai, c'est bon <3", user: User.all.sample)
 Potin.create(title: "Le chat", description: "manisme", user: User.all.sample)
 Potin.create(title: Faker::Quote.singular_siegler , description: Faker::Quote.yoda, user: User.all.sample)
+
+20.times do 
+  Comment.create(content: Faker::Movies::HarryPotter.quote, potin: Potin.all.sample, user: User.all.sample)
+end

@@ -1,0 +1,27 @@
+<br/><h1>Edition du potin n°<%= @potin.id %></h1>
+  <p><br/>
+    <%= "=" * 20 %><br/>
+    <%= @potin.description %><br/>
+    <%= "=" * 20 %><br/><br/>
+
+    L'auteur : <%= link_to "#{@potin.user.first_name} #{@potin.user.last_name}", user_path(@potin.user.id) %><br>
+    La ville de l'auteur : <%= @potin.user.origin %>
+
+  </p>
+
+
+  <%= form_tag url_for(action: 'update'), method: "put" do %>
+      <%= label_tag "Le titre c'était :" %>
+      <%= text_field_tag 'title', @potin.title %>
+      <br /> <br />
+
+      <%= label_tag 'La description :' %>
+      <%= text_area_tag 'description', @potin.description %>
+      <br /> <br />
+
+      <%= label_tag "Le prénom de l'auteur :" %>
+      <%= text_field_tag 'author', @potin.user.first_name %>
+      <br /> <br />
+
+      <%= submit_tag "Editer le potin" %>
+  <% end %>
