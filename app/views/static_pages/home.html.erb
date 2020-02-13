@@ -9,7 +9,13 @@
 
 <div class="jumbotron text-center" style="margin-bottom: 0;">
   <br/><h1>La bienvenue à toi !</h1>
-  <h5>Tu trouveras la liste des potins ci-dessous et, d'ailleurs, toi aussi tu peux <%= link_to "en ajouter un", new_potin_path %> si tu veux ;)</h5>
+  <h5>Tu trouveras la liste des potins ci-dessous.<br/>
+    <% if logged_in? %>
+      Toi aussi <%= current_user.first_name %> tu peux <%= link_to "en ajouter un", new_potin_path %> si tu veux ;)
+    <% else %>
+      Connecte toi ou inscrit toi pour pouvoir en ajouter.
+    <% end %>
+  </h5>
 </div>
 
 <div class="list-group">

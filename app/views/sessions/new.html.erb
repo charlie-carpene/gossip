@@ -1,4 +1,4 @@
-<% unless logged_in? %>
+<% if flash[:danger].present? %>
   <div class="alert alert-danger" role="alert">
     <%= flash[:danger] %>
     <% flash.discard(:danger) %>

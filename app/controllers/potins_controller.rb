@@ -3,8 +3,9 @@ class PotinsController < ApplicationController
   end
 
   def create
-    @potin = Potin.new(title: params[:title], description: params[:description], user: User.find_by(first_name: params[:author]))
-
+    @potin = Potin.new(title: params[:title], description: params[:description])
+    @potin.user = current_user
+    
     if @potin.save
       flash[:notice] = "Ton potin a bien été enregistré"
       redirect_to home_path
