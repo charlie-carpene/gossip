@@ -8,5 +8,6 @@ Rails.application.routes.draw do
 
   resources :potins
   resources :users
+  resources :sessions, only: [:new, :create, :destroy]
   resources :comments, only: [:create]
 end

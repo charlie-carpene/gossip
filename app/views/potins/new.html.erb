@@ -1,16 +1,15 @@
-<% if @potin != nil %>
-  <% if @potin.errors.any? %>
-    <div class="alert alert-danger" role="alert">
-      <p>Nous n'avons pas réussi à créer le potin pour la (ou les) raison(s) suivante(s) :</p>
-      <p><%= flash.now[:notice] %>
-      <ul>
-        <% @potin.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
+
+<% if @fail == true %>
+  <div class="alert alert-danger" role="alert">
+    <p>Nous n'avons pas réussi à créer le potin pour la (ou les) raison(s) suivante(s) :</p>
+    <ul>
+      <% @potin.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
 <% end %>
+
 
 <br/><h1>Crée un potin !</h1>
 <p>Balance ton potin via le formulaire ci-dessous</p>
@@ -25,7 +24,8 @@
     <%= text_area_tag 'body', 'Contenu du potin' %>
     <br /> <br />
 
-    <%= label_tag 'Enfin ton prénom :' %>
+
+    <%= label_tag "Enfin ton prénom car tu n'as pas encore de compte :" %>
     <%= text_field_tag 'author' %>
     <br /> <br />
 

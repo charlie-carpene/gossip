@@ -1,4 +1,6 @@
 class StaticPagesController < ApplicationController
+  before_action :authenticate_user, only: [:team, :contact]
+
   def home
     @potins = Potin.all
   end
@@ -10,5 +12,14 @@ class StaticPagesController < ApplicationController
   end
 
   def new_potin
+  end
+
+  private
+
+  def authenticate_user
+    unless current_user
+      flash[:danger] = "You are logged out : login if you want to access content."
+      redirect_to new_session_path
+    end
   end
 end

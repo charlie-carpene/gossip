@@ -7,15 +7,35 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script src="//netdna.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
   </head>
 
   <header>
-    <nav class="navbar navbar-expand navbar-dark bg-primary">
-      <%= link_to "Gossips", home_path, :class => "navbar-brand" %>
-      <%= link_to "Team", static_pages_team_path, :class => "btn btn-primary my-2 my-sm-0" %>
-      <%= link_to "Contact", static_pages_contact_path, :class => "btn btn-primary my-2 my-sm-0" %>
-      <%= link_to "Welcome", welcome_path(:name), :class => "btn btn-primary my-2 my-sm-0" %>
+    <nav class="navbar navbar-expand navbar-dark bg-primary justify-content-between">
+      <div>
+        <%= link_to "Gossips", home_path, :class => "navbar-brand" %>
+        <%= link_to "Team", static_pages_team_path, :class => "btn btn-primary my-2 my-sm-0" %>
+        <%= link_to "Contact", static_pages_contact_path, :class => "btn btn-primary my-2 my-sm-0" %>
+        <%= link_to "Welcome", welcome_path(:name), :class => "btn btn-primary my-2 my-sm-0" %>
+      </div>
+      <div>
+        <% if logged_in? %>
+          <%= link_to "Log Out", new_session_path(session.id), method: :delete, :class => "btn btn-primary my-2 my-sm-0" %>
+        <% else %>
+          <div class="dropdown show">
+            <a class="btn btn-primary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Se connecter / Créer un compte
+            </a>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+              <%= link_to "Sign up", new_user_path, :class => "dropdown-item" %>
+              <%= link_to "Login", new_session_path, :class => "dropdown-item" %>
+            </div>
+          </div>
+        <% end %>
+      </div>
+
     </nav>
   </header>
 

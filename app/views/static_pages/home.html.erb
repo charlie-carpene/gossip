@@ -1,7 +1,9 @@
-<% if flash.now[:notice].present?%>
+<% if flash.now[:notice].present? || flash.now[:success].present?%>
   <div class="alert alert-success" role="alert">
     <p><%= flash.now[:notice] %></p>
     <% flash.discard(:notice) %>
+    <p><%= flash.now[:success] %></p>
+    <% flash.discard(:success) %>
   </div>
 <% end %>
 

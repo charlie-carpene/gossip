@@ -9,16 +9,11 @@ class PotinsController < ApplicationController
       flash[:notice] = "Ton potin a bien été enregistré"
       redirect_to home_path
     else
+      @fail = true
       render 'new'
     end
   end
 
-  def create_comment
-puts "-" * 60
-    puts "yeah"
-    puts "-" * 60
-
-  end
 
   def show
     @potin = Potin.find(params[:id])
